@@ -35,7 +35,6 @@ jobs:
     - name: Build Mod
       uses: geode-sdk/build-geode-mod@main
       with:
-        bindings: false # Выставить true, если используются кастомные биндинги
         target: ${{ matrix.config.target }}
         # Для версии Geometry Dash 2.208
         sdk: v3.0.0-beta.3
