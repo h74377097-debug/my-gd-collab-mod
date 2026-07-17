@@ -1,0 +1,20 @@
+{
+  "geode": "3.0.0-beta.3",
+  "id": "malarew.gd_collab_editor",
+  "name": "GD Collab Editor",
+  "version": "1.0.0",
+  "developer": "Malarew",
+  "description": "Бесплатный мод для совместного создания и редактирования уровней в Geometry Dash в реальном времени!",
+  "dependencies": [
+    {
+      "id": "geode.loader",
+      "version": ">=3.0.0-beta.3",
+      "importance": "required"
+    }
+  ],
+  "resources": {
+    "sprites": [
+      "resources/*.png"
+    ]
+  }
+}
