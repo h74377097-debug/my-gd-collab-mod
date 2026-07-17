@@ -1,0 +1,41 @@
+# .github/workflows/build.yml
+# Автоматическая компиляция мода БЕЗ установки локальных программ (CMake, VS Code, C++)
+# Просто залейте файлы на ваш GitHub репозиторий, и GitHub Actions сам соберет готовый .geode файл!
+
+name: Build Geode Mod
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - name: Windows
+          os: windows-latest
+          target: win
+        - name: Android 32-bit
+          os: ubuntu-latest
+          target: android32
+        - name: Android 64-bit
+          os: ubuntu-latest
+          target: android64
+
+    name: Build (${{ matrix.config.name }})
+    runs-on: ${{ matrix.config.os }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Build Mod
+      uses: geode-sdk/build-geode-mod@main
+      with:
+        bindings: false # Выставить true, если используются кастомные биндинги
+        target: ${{ matrix.config.target }}
+        # Для версии Geometry Dash 2.208
+        sdk: v3.0.0-beta.3
