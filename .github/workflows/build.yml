@@ -33,7 +33,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Build Mod
-      uses: geode-sdk/build-geode-mod@main
+      uses: geode-sdk/build-geode-mod@v2
       with:
-        platform: ${{ matrix.config.target }}
         target: ${{ matrix.config.target }}
+        cli: v3.7.0
