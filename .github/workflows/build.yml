@@ -1,8 +1,8 @@
 # .github/workflows/build.yml
 # Автоматическая компиляция мода БЕЗ установки локальных программ (CMake, VS Code, C++)
-# Просто залейте файлы на ваш GitHub репозиторий, и GitHub Actions сам соберет готовый .geode файл!
+# Просто залейте файлы на ваш GitHub репозиторий, и GitHub Actions сам соберет готовый .geode файл для Windows!
 
-name: Build Geode Mod
+name: Build Geode Mod (Windows Only)
 
 on:
   push:
@@ -11,22 +11,8 @@ on:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-        - name: Windows
-          os: windows-latest
-          target: Win64
-        - name: macOS
-          os: macos-latest
-          target: Mac
-        - name: Android
-          os: ubuntu-latest
-          target: Android
-
-    name: Build (${{ matrix.config.name }})
-    runs-on: ${{ matrix.config.os }}
+    name: Build (Windows)
+    runs-on: windows-latest
 
     steps:
     - name: Checkout
@@ -35,5 +21,5 @@ jobs:
     - name: Build Mod
       uses: geode-sdk/build-geode-mod@main
       with:
-        target: ${{ matrix.config.target }}
+        target: win
         cli: v3.7.0
